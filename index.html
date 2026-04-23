@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: radial-gradient(ellipse at top, #3a2817 0%, #1a0f08 100%);
+    font-family: 'IM Fell English', serif;
+  }
+
+  /* Selettore lingue */
+  .language-switcher {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .lang-btn {
+    background: rgba(244, 228, 188, 0.1);
+    color: #e8d5a0;
+    border: 1px solid rgba(232, 213, 160, 0.3);
+    padding: 8px 16px;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .lang-btn:hover {
+    background: rgba(244, 228, 188, 0.2);
+    color: #f4e4bc;
+    border-color: rgba(232, 213, 160, 0.6);
+  }
+
+  .lang-btn.active {
+    background: rgba(244, 228, 188, 0.25);
+    color: #f4e4bc;
+    border-color: #d4b98a;
+    box-shadow: 0 0 10px rgba(212, 185, 138, 0.3);
+  }
+
+  .scroll-container {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    margin: 20px 0;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+  }
+
+  /* Rulli laterali */
+  .scroll-rod {
+    position: absolute;
+    top: -15px;
+    bottom: -15px;
+    width: 35px;
+    background: linear-gradient(90deg,
+      #3d2817 0%, #6b4423 25%, #8b5a2b 50%, #6b4423 75%, #3d2817 100%);
+    border-radius: 18px;
+    box-shadow:
+      inset 0 0 10px rgba(0, 0, 0, 0.5),
+      0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+
+  .scroll-rod::before,
+  .scroll-rod::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    width: 51px;
+    height: 25px;
+    background: radial-gradient(ellipse at center,
+      #8b5a2b 0%, #6b4423 50%, #3d2817 100%);
+    border-radius: 50%;
+    box-shadow:
+      inset 0 2px 4px rgba(255, 220, 150, 0.2),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+      0 3px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .scroll-rod::before { top: -12px; }
+  .scroll-rod::after { bottom: -12px; }
+  .scroll-rod.left { left: -10px; }
+  .scroll-rod.right { right: -10px; }
+
+  /* Corpo pergamena */
+  .scroll {
+    position: relative;
+    margin: 0 25px;
+    padding: 70px 70px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(139, 90, 43, 0.15) 0%, transparent 40%),
+      radial-gradient(ellipse at 80% 70%, rgba(101, 67, 33, 0.2) 0%, transparent 45%),
+      radial-gradient(ellipse at 60% 20%, rgba(139, 90, 43, 0.1) 0%, transparent 35%),
+      radial-gradient(ellipse at 30% 80%, rgba(101, 67, 33, 0.15) 0%, transparent 40%),
+      linear-gradient(135deg, #f4e4bc 0%, #e8d5a0 50%, #d4b98a 100%);
+    box-shadow:
+      inset 0 0 60px rgba(101, 67, 33, 0.3),
+      inset 0 0 20px rgba(139, 90, 43, 0.2);
+    z-index: 1;
+  }
+
+  .scroll::before,
+  .scroll::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: inherit;
+  }
+
+  .scroll::before {
+    top: -10px;
+    clip-path: polygon(
+      0 50%, 3% 20%, 7% 60%, 12% 30%, 17% 70%, 22% 25%,
+      28% 65%, 33% 35%, 38% 75%, 44% 30%, 50% 60%, 56% 25%,
+      62% 70%, 67% 35%, 73% 65%, 78% 25%, 83% 70%, 88% 30%,
+      93% 60%, 97% 25%, 100% 50%, 100% 100%, 0 100%
+    );
+  }
+
+  .scroll::after {
+    bottom: -10px;
+    clip-path: polygon(
+      0 0, 100% 0, 100% 50%, 97% 75%, 93% 40%, 88% 70%,
+      83% 30%, 78% 75%, 73% 35%, 67% 65%, 62% 30%, 56% 75%,
+      50% 40%, 44% 70%, 38% 25%, 33% 65%, 28% 35%, 22% 75%,
+      17% 30%, 12% 70%, 7% 40%, 3% 80%, 0 50%
+    );
+  }
+
+  .scroll-text {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.2rem;
+    line-height: 1.6;
+    color: #3d2817;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+    transition: opacity 0.3s ease;
+  }
+
+  .scroll-text.fade { opacity: 0; }
+
+  .ornament {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #6b4423;
+    margin: 20px 0;
+    opacity: 0.7;
+  }
+
+  .donation-section {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .venmo-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #3d95ce 0%, #008cff 100%);
+    color: white;
+    text-decoration: none;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow:
+      0 6px 20px rgba(0, 140, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+  }
+
+  .venmo-button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 10px 25px rgba(0, 140, 255, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .venmo-button:active { transform: translateY(-1px); }
+
+  .venmo-icon { width: 24px; height: 24px; fill: white; }
+
+  @media (max-width: 600px) {
+    .scroll { padding: 50px 35px; margin: 0 20px; }
+    .scroll-text { font-size: 1.6rem; }
+    .venmo-button { padding: 14px 30px; font-size: 1rem; }
+    .lang-btn { padding: 6px 12px; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Selettore lingue -->
+  <div class="language-switcher" role="group" aria-label="Language selector">
+    <button class="lang-btn active" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="es">Español</button>
+    <button class="lang-btn" data-lang="fr">Français</button>
+    <button class="lang-btn" data-lang="it">Italiano</button>
+    <button class="lang-btn" data-lang="de">Deutsch</button>
+  </div>
+
+  <div class="scroll-container">
+    <div class="scroll-rod left"></div>
+    <div class="scroll-rod right"></div>
+
+    <div class="scroll">
+      <div class="ornament">❦</div>
+
+      <p class="scroll-text" id="scrollText">
+        Here you write your text in ancient script.
+        Replace these lines with the words
+        you wish to appear on the scroll.
+      </p>
+
+      <div class="ornament">❦</div>
+    </div>
+  </div>
+
+  <div class="donation-section">
+    <!-- SOSTITUISCI "tuo-username-venmo" con il tuo username Venmo reale -->
+    <a href="https://venmo.com/tuo-username-venmo" class="venmo-button" id="donateBtn" target="_blank" rel="noopener">
+      <svg class="venmo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3zm-4.8 13.5h-3.15L9.3 7.65h2.7l1.05 5.55c.6-.9 1.2-2.25 1.2-3.15 0-.75-.15-1.2-.3-1.65l2.4-.45c.3.45.45 1.2.45 1.95 0 2.25-2.1 5.4-4.05 6.6z"/>
+      </svg>
+      <span id="donateText">Support with Venmo</span>
+    </a>
+  </div>
+
+<script>
+  // Traduzioni: modifica qui i testi per ciascuna lingua
+  const translations = {
+    en: {
+      scroll: "Here you write your text in ancient script. Replace these lines with the words you wish to appear on the scroll.",
+      donate: "Support with Venmo"
+    },
+    es: {
+      scroll: "Aquí escribes tu texto en escritura antigua. Sustituye estas líneas por las palabras que deseas que aparezcan en el pergamino.",
+      donate: "Apoya con Venmo"
+    },
+    fr: {
+      scroll: "Ici vous écrivez votre texte en écriture ancienne. Remplacez ces lignes par les mots que vous souhaitez voir apparaître sur le parchemin.",
+      donate: "Soutenir avec Venmo"
+    },
+    it: {
+      scroll: "Qui scrivi il tuo testo in corsivo antico. Sostituisci queste righe con le parole che desideri apparire sulla pergamena.",
+      donate: "Sostieni con Venmo"
+    },
+    de: {
+      scroll: "Hier schreibst du deinen Text in alter Schrift. Ersetze diese Zeilen durch die Worte, die auf der Pergamentrolle erscheinen sollen.",
+      donate: "Mit Venmo unterstützen"
+    }
+  };
+
+  const scrollText = document.getElementById('scrollText');
+  const donateText = document.getElementById('donateText');
+  const buttons = document.querySelectorAll('.lang-btn');
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Fade out, aggiorna, fade in
+    scrollText.classList.add('fade');
+    setTimeout(() => {
+      scrollText.textContent = t.scroll;
+      donateText.textContent = t.donate;
+      document.documentElement.lang = lang;
+      scrollText.classList.remove('fade');
+    }, 200);
+
+    // Aggiorna stato attivo dei bottoni
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+</script>
+
+</body>
+</html>
