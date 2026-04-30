@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   html, body { background: #f5efe0; }
-
+ 
   body {
     min-height: 100vh;
     background:
@@ -27,7 +27,7 @@
     align-items: center;
     -webkit-font-smoothing: antialiased;
   }
-
+ 
   /* Selettore lingue */
   .language-switcher {
     display: flex;
@@ -37,7 +37,7 @@
     justify-content: center;
     align-items: center;
   }
-
+ 
   .lang-btn {
     background: transparent;
     color: #6b5b3f;
@@ -51,30 +51,30 @@
     text-transform: uppercase;
     transition: color 0.2s ease;
   }
-
+ 
   .lang-btn:hover { color: #2b2419; }
-
+ 
   .lang-btn.active {
     color: #2b2419;
     border-bottom: 1px solid #2b2419;
     font-weight: 700;
   }
-
+ 
   .lang-sep {
     color: #b8a884;
     font-size: 0.75rem;
     user-select: none;
   }
-
+ 
   .page {
     max-width: 640px;
     width: 100%;
     padding: 0 8px;
     transition: opacity 0.35s ease;
   }
-
+ 
   .page.fade { opacity: 0; }
-
+ 
   .title {
     font-family: Geneva, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
     font-weight: 700;
@@ -85,7 +85,7 @@
     margin-bottom: 12px;
     color: #2b2419;
   }
-
+ 
   .title-rule {
     width: 50px;
     height: 1px;
@@ -93,7 +93,7 @@
     margin: 0 auto 48px;
     opacity: 0.5;
   }
-
+ 
   .body-text {
     font-family: Arial, "Helvetica Neue", Helvetica, "Noto Sans SC", sans-serif;
     font-size: 1.05rem;
@@ -104,9 +104,9 @@
     color: #2b2419;
     font-weight: 400;
   }
-
+ 
   .body-text p { margin-bottom: 1.2em; }
-
+ 
   .question {
     font-family: Geneva, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
     font-weight: 400;
@@ -117,7 +117,7 @@
     letter-spacing: 0.01em;
     line-height: 1.5;
   }
-
+ 
   .manifesto {
     margin-top: 3em;
     text-align: center;
@@ -128,12 +128,12 @@
     color: #2b2419;
     text-transform: uppercase;
   }
-
+ 
   .manifesto-pair { margin-bottom: 1.4em; line-height: 1.5; }
   .manifesto-pair:last-child { margin-bottom: 0; }
   .manifesto-line { display: block; }
   .manifesto-line.emphasis { font-weight: 700; }
-
+ 
   .footer-note {
     margin-top: 3.5em;
     text-align: center;
@@ -144,14 +144,14 @@
     text-transform: uppercase;
     font-weight: 400;
   }
-
+ 
   /* ====== SEZIONE PAGAMENTI ====== */
   .payments-section {
     margin-top: 64px;
     width: 100%;
     max-width: 640px;
   }
-
+ 
   .payments-title {
     text-align: center;
     font-family: Geneva, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
@@ -162,14 +162,14 @@
     color: #2b2419;
     margin-bottom: 28px;
   }
-
+ 
   .payments-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 32px;
   }
-
+ 
   .pay-button {
     display: flex;
     align-items: center;
@@ -188,20 +188,20 @@
     border: 1px solid #2b2419;
     transition: all 0.25s ease;
   }
-
+ 
   .pay-button:hover {
     background: #f5efe0;
     color: #2b2419;
   }
-
+ 
   .pay-icon { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
-
+ 
   /* Sezione cripto */
   .crypto-section {
     border-top: 1px solid rgba(107, 91, 63, 0.25);
     padding-top: 24px;
   }
-
+ 
   .crypto-title {
     text-align: center;
     font-family: Geneva, "Helvetica Neue", Arial, sans-serif;
@@ -212,13 +212,13 @@
     color: #6b5b3f;
     margin-bottom: 18px;
   }
-
+ 
   .crypto-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .crypto-item {
     display: flex;
     align-items: center;
@@ -229,9 +229,9 @@
     border-radius: 2px;
     transition: background 0.2s ease;
   }
-
+ 
   .crypto-item:hover { background: rgba(43, 36, 25, 0.08); }
-
+ 
   .crypto-label {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-weight: 700;
@@ -242,7 +242,7 @@
     min-width: 40px;
     flex-shrink: 0;
   }
-
+ 
   .crypto-address {
     font-family: "SF Mono", Menlo, Monaco, "Courier New", monospace;
     font-size: 0.78rem;
@@ -253,7 +253,7 @@
     white-space: nowrap;
     user-select: all;
   }
-
+ 
   .copy-btn {
     background: transparent;
     border: 1px solid rgba(107, 91, 63, 0.4);
@@ -269,26 +269,26 @@
     transition: all 0.2s ease;
     flex-shrink: 0;
   }
-
+ 
   .copy-btn:hover {
     background: #2b2419;
     color: #f5efe0;
     border-color: #2b2419;
   }
-
+ 
   .copy-btn.copied {
     background: #5c7a3f;
     color: #f5efe0;
     border-color: #5c7a3f;
   }
-
+ 
   html[lang="zh"] .body-text {
     text-align: left;
     hyphens: none;
     -webkit-hyphens: none;
     line-height: 1.9;
   }
-
+ 
   @media (max-width: 600px) {
     body { padding: 40px 18px 60px; }
     .language-switcher { margin-bottom: 40px; }
@@ -305,7 +305,7 @@
 </style>
 </head>
 <body>
-
+ 
   <nav class="language-switcher" role="group" aria-label="Language selector">
     <button class="lang-btn active" data-lang="en">English</button>
     <span class="lang-sep">·</span>
@@ -315,7 +315,7 @@
     <span class="lang-sep">·</span>
     <button class="lang-btn" data-lang="pt">Português</button>
   </nav>
-
+ 
   <article class="page" id="page">
     <h1 class="title" id="title">Artist Statement</h1>
     <div class="title-rule"></div>
@@ -323,16 +323,16 @@
     <div class="manifesto" id="manifesto"></div>
     <p class="footer-note" id="footerNote"></p>
   </article>
-
+ 
   <!-- ============================================================ -->
   <!-- SEZIONE PAGAMENTI                                              -->
   <!-- ============================================================ -->
   <section class="payments-section">
     <h2 class="payments-title" id="paymentsTitle">Support the Artist</h2>
-
+ 
     <!-- App di pagamento USA: modifica gli href con i tuoi username reali -->
     <div class="payments-grid">
-
+ 
       <!-- VENMO: sostituisci tuo-username-venmo -->
       <a href="https://venmo.com/tuo-username-venmo" class="pay-button" target="_blank" rel="noopener">
         <svg class="pay-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -340,7 +340,7 @@
         </svg>
         Venmo
       </a>
-
+ 
       <!-- PAYPAL: sostituisci tuo-username-paypal con il tuo PayPal.Me handle -->
       <a href="https://paypal.me/tuo-username-paypal" class="pay-button" target="_blank" rel="noopener">
         <svg class="pay-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -348,7 +348,7 @@
         </svg>
         PayPal
       </a>
-
+ 
       <!-- CASH APP: sostituisci tuo-cashtag (senza il $) -->
       <a href="https://cash.app/$tuo-cashtag" class="pay-button" target="_blank" rel="noopener">
         <svg class="pay-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -356,7 +356,7 @@
         </svg>
         Cash App
       </a>
-
+ 
       <!-- BUY ME A COFFEE: sostituisci tuo-username-bmc -->
       <a href="https://buymeacoffee.com/tuo-username-bmc" class="pay-button" target="_blank" rel="noopener">
         <svg class="pay-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -364,39 +364,39 @@
         </svg>
         Buy Me a Coffee
       </a>
-
+ 
     </div>
-
+ 
     <!-- ====== CRIPTOVALUTE ====== -->
     <div class="crypto-section">
       <h3 class="crypto-title" id="cryptoTitle">Cryptocurrency</h3>
       <div class="crypto-list">
-
+ 
         <!-- BITCOIN: sostituisci l'indirizzo qui sotto -->
         <div class="crypto-item">
           <span class="crypto-label">BTC</span>
           <span class="crypto-address" id="btc-addr">bc1qxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
           <button class="copy-btn" data-target="btc-addr">Copy</button>
         </div>
-
+ 
         <!-- LITECOIN: sostituisci l'indirizzo qui sotto -->
         <div class="crypto-item">
           <span class="crypto-label">LTC</span>
           <span class="crypto-address" id="ltc-addr">ltc1qxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
           <button class="copy-btn" data-target="ltc-addr">Copy</button>
         </div>
-
+ 
         <!-- ETHEREUM: sostituisci l'indirizzo qui sotto -->
         <div class="crypto-item">
           <span class="crypto-label">ETH</span>
           <span class="crypto-address" id="eth-addr">0xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
           <button class="copy-btn" data-target="eth-addr">Copy</button>
         </div>
-
+ 
       </div>
     </div>
   </section>
-
+ 
 <script>
   // ============================================================
   // TRADUZIONI
@@ -424,7 +424,7 @@
       paymentsTitle: "Support the Artist",
       cryptoTitle: "Cryptocurrency"
     },
-
+ 
     pt: {
       title: "Declaração do Artista",
       paragraphs: [
@@ -447,7 +447,7 @@
       paymentsTitle: "Apoie o Artista",
       cryptoTitle: "Criptomoedas"
     },
-
+ 
     es: {
       title: "Declaración del Artista",
       paragraphs: [
@@ -470,7 +470,7 @@
       paymentsTitle: "Apoya al Artista",
       cryptoTitle: "Criptomonedas"
     },
-
+ 
     zh: {
       title: "艺术家声明",
       paragraphs: [
@@ -494,7 +494,7 @@
       cryptoTitle: "加密货币"
     }
   };
-
+ 
   // ============================================================
   // Rendering
   // ============================================================
@@ -506,19 +506,19 @@
   const paymentsTitleEl = document.getElementById('paymentsTitle');
   const cryptoTitleEl = document.getElementById('cryptoTitle');
   const buttons = document.querySelectorAll('.lang-btn');
-
+ 
   function renderLanguage(lang) {
     const t = translations[lang];
     if (!t) return;
-
+ 
     titleEl.textContent = t.title;
-
+ 
     let bodyHTML = '';
     t.paragraphs.forEach(p => { bodyHTML += `<p>${p}</p>`; });
     bodyHTML += `<p class="question">${t.question}</p>`;
     t.paragraphsAfter.forEach(p => { bodyHTML += `<p>${p}</p>`; });
     bodyEl.innerHTML = bodyHTML;
-
+ 
     let manHTML = '';
     t.manifesto.forEach(pair => {
       manHTML += '<div class="manifesto-pair">';
@@ -529,29 +529,29 @@
       manHTML += '</div>';
     });
     manifestoEl.innerHTML = manHTML;
-
+ 
     footerEl.textContent = t.footer;
     paymentsTitleEl.textContent = t.paymentsTitle;
     cryptoTitleEl.textContent = t.cryptoTitle;
     document.documentElement.lang = lang;
   }
-
+ 
   function setLanguage(lang) {
     page.classList.add('fade');
     setTimeout(() => {
       renderLanguage(lang);
       page.classList.remove('fade');
     }, 250);
-
+ 
     buttons.forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
   }
-
+ 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
   });
-
+ 
   // ============================================================
   // Funzionalità "Copy" per indirizzi cripto
   // ============================================================
@@ -559,7 +559,7 @@
     btn.addEventListener('click', async () => {
       const targetId = btn.dataset.target;
       const text = document.getElementById(targetId).textContent.trim();
-
+ 
       try {
         await navigator.clipboard.writeText(text);
       } catch {
@@ -571,7 +571,7 @@
         document.execCommand('copy');
         window.getSelection().removeAllRanges();
       }
-
+ 
       const originalText = btn.textContent;
       btn.textContent = 'Copied';
       btn.classList.add('copied');
@@ -581,9 +581,9 @@
       }, 1800);
     });
   });
-
+ 
   renderLanguage('en');
 </script>
-
+ 
 </body>
 </html>
