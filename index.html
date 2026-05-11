@@ -284,6 +284,118 @@
     border-color: #5c7a3f;
   }
 
+  /* ====== SEZIONE CONTATTO ====== */
+  .contact-section {
+    margin-top: 64px;
+    width: 100%;
+    max-width: 640px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(107, 91, 63, 0.25);
+  }
+
+  .contact-title {
+    text-align: center;
+    font-family: Geneva, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2b2419;
+    margin-bottom: 10px;
+  }
+
+  .contact-subtitle {
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    font-size: 0.85rem;
+    color: #6b5b3f;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(107, 91, 63, 0.3);
+    border-radius: 2px;
+    font-family: Arial, "Helvetica Neue", Helvetica, "Noto Sans SC", sans-serif;
+    font-size: 0.95rem;
+    color: #2b2419;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #2b2419;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #a08d6a;
+  }
+
+  .contact-submit {
+    align-self: center;
+    margin-top: 8px;
+    padding: 14px 36px;
+    background: #2b2419;
+    color: #f5efe0;
+    border: 1px solid #2b2419;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .contact-submit:hover {
+    background: #f5efe0;
+    color: #2b2419;
+  }
+
+  .contact-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .contact-feedback {
+    text-align: center;
+    margin-top: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    min-height: 1.4em;
+  }
+
+  .contact-feedback.success { color: #5c7a3f; }
+  .contact-feedback.error { color: #a04545; }
+
+  /* Honeypot field: invisibile agli umani, visibile ai bot */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
   html[lang="zh"] .body-text {
     text-align: left;
     hyphens: none;
@@ -303,6 +415,8 @@
     .payments-grid { grid-template-columns: 1fr; }
     .pay-button { padding: 12px 18px; font-size: 0.78rem; }
     .crypto-address { font-size: 0.7rem; }
+    .contact-form input, .contact-form textarea { font-size: 0.9rem; padding: 10px 12px; }
+    .contact-submit { padding: 12px 28px; font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -409,9 +523,56 @@
           <button class="copy-btn" data-target="usdt-addr">Copy</button>
         </div>
 
-      
       </div>
     </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SEZIONE CONTATTO                                              -->
+  <!-- ============================================================ -->
+  <section class="contact-section">
+    <h2 class="contact-title" id="contactTitle">Contact Me</h2>
+    <p class="contact-subtitle" id="contactSubtitle">Leave a message — the artist will reply.</p>
+
+    <!--
+      CONFIGURAZIONE FORMSUBMIT:
+      1. La prima volta che qualcuno invia il form usando questa email,
+         FormSubmit ti manda una mail di conferma con un link da cliccare.
+      2. Dopo l'attivazione, ti darà un alias/token (es. abc123xyz) da usare
+         al posto della tua email vera. Sostituisci "TUA-EMAIL@esempio.com"
+         con quell'alias così l'email vera non appare nel codice sorgente.
+         L'URL diventerà: https://formsubmit.co/abc123xyz
+    -->
+    <form class="contact-form"
+          id="contactForm"
+          action="https://formsubmit.co/eleonoravolpe.ev@gmail.com"
+          method="POST">
+
+      <!-- Campo nome opzionale -->
+      <input type="text" name="name" id="contactName" placeholder="Your name (optional)" autocomplete="name">
+
+      <!-- Email del visitatore (così puoi rispondere) -->
+      <input type="email" name="email" id="contactEmail" placeholder="Your email" required autocomplete="email">
+
+      <!-- Messaggio -->
+      <textarea name="message" id="contactMessage" placeholder="Your message" required></textarea>
+
+      <!-- Honeypot anti-bot: gli umani non lo vedono, i bot lo compilano -->
+      <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
+
+      <!-- Disattiva la pagina di captcha di FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Oggetto della mail che riceverai -->
+      <input type="hidden" name="_subject" value="New message from Artist Statement page">
+
+      <!-- Dopo l'invio reindirizza qui (lasciato vuoto = pagina di ringraziamento FormSubmit) -->
+      <!-- <input type="hidden" name="_next" value="https://ev-000.github.io/art-around/"> -->
+
+      <button type="submit" class="contact-submit" id="contactSubmit">Send Message</button>
+    </form>
+
+    <p class="contact-feedback" id="contactFeedback"></p>
   </section>
 
 <script>
@@ -440,7 +601,16 @@
       ],
       footer: "This social experiment will be filmed.",
       paymentsTitle: "Support the Artist",
-      cryptoTitle: "Cryptocurrency"
+      cryptoTitle: "Cryptocurrency",
+      contactTitle: "Contact Me",
+      contactSubtitle: "Leave a message — the artist will reply.",
+      placeholderName: "Your name (optional)",
+      placeholderEmail: "Your email",
+      placeholderMessage: "Your message",
+      submitBtn: "Send Message",
+      sending: "Sending...",
+      successMsg: "Thank you. Your message has been sent.",
+      errorMsg: "Something went wrong. Please try again."
     },
 
     pt: {
@@ -464,7 +634,16 @@
       ],
       footer: "Este experimento social será filmado.",
       paymentsTitle: "Apoie o Artista",
-      cryptoTitle: "Criptomoedas"
+      cryptoTitle: "Criptomoedas",
+      contactTitle: "Contate-me",
+      contactSubtitle: "Deixe uma mensagem — o artista responderá.",
+      placeholderName: "Seu nome (opcional)",
+      placeholderEmail: "Seu e-mail",
+      placeholderMessage: "Sua mensagem",
+      submitBtn: "Enviar Mensagem",
+      sending: "Enviando...",
+      successMsg: "Obrigado. Sua mensagem foi enviada.",
+      errorMsg: "Algo deu errado. Por favor, tente novamente."
     },
 
     es: {
@@ -488,7 +667,16 @@
       ],
       footer: "Este experimento social será filmado.",
       paymentsTitle: "Apoya al Artista",
-      cryptoTitle: "Criptomonedas"
+      cryptoTitle: "Criptomonedas",
+      contactTitle: "Contáctame",
+      contactSubtitle: "Deja un mensaje — el artista te responderá.",
+      placeholderName: "Tu nombre (opcional)",
+      placeholderEmail: "Tu correo electrónico",
+      placeholderMessage: "Tu mensaje",
+      submitBtn: "Enviar Mensaje",
+      sending: "Enviando...",
+      successMsg: "Gracias. Tu mensaje ha sido enviado.",
+      errorMsg: "Algo salió mal. Por favor, inténtalo de nuevo."
     },
 
     zh: {
@@ -512,7 +700,16 @@
       ],
       footer: "本次社会实验将被全程拍摄。",
       paymentsTitle: "支持艺术家",
-      cryptoTitle: "加密货币"
+      cryptoTitle: "加密货币",
+      contactTitle: "联系我",
+      contactSubtitle: "留下信息 — 艺术家会回复你。",
+      placeholderName: "你的姓名(可选)",
+      placeholderEmail: "你的邮箱",
+      placeholderMessage: "你的留言",
+      submitBtn: "发送信息",
+      sending: "发送中...",
+      successMsg: "谢谢。你的信息已发送。",
+      errorMsg: "出了点问题,请重试。"
     }
   };
 
@@ -526,11 +723,22 @@
   const footerEl = document.getElementById('footerNote');
   const paymentsTitleEl = document.getElementById('paymentsTitle');
   const cryptoTitleEl = document.getElementById('cryptoTitle');
+  const contactTitleEl = document.getElementById('contactTitle');
+  const contactSubtitleEl = document.getElementById('contactSubtitle');
+  const contactNameEl = document.getElementById('contactName');
+  const contactEmailEl = document.getElementById('contactEmail');
+  const contactMessageEl = document.getElementById('contactMessage');
+  const contactSubmitEl = document.getElementById('contactSubmit');
+  const contactFeedbackEl = document.getElementById('contactFeedback');
   const buttons = document.querySelectorAll('.lang-btn');
+
+  // Stringhe correnti (usate dal feedback del form)
+  let currentLang = 'en';
 
   function renderLanguage(lang) {
     const t = translations[lang];
     if (!t) return;
+    currentLang = lang;
 
     titleEl.textContent = t.title;
 
@@ -554,6 +762,17 @@
     footerEl.textContent = t.footer;
     paymentsTitleEl.textContent = t.paymentsTitle;
     cryptoTitleEl.textContent = t.cryptoTitle;
+
+    // Form contatto
+    contactTitleEl.textContent = t.contactTitle;
+    contactSubtitleEl.textContent = t.contactSubtitle;
+    contactNameEl.placeholder = t.placeholderName;
+    contactEmailEl.placeholder = t.placeholderEmail;
+    contactMessageEl.placeholder = t.placeholderMessage;
+    contactSubmitEl.textContent = t.submitBtn;
+    contactFeedbackEl.textContent = '';
+    contactFeedbackEl.className = 'contact-feedback';
+
     document.documentElement.lang = lang;
   }
 
@@ -601,6 +820,52 @@
         btn.classList.remove('copied');
       }, 1800);
     });
+  });
+
+  // ============================================================
+  // Submit del form di contatto (AJAX, senza reindirizzamento)
+  // ============================================================
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Honeypot: se compilato → bot, fingi successo senza inviare
+    const honey = contactForm.querySelector('input[name="_honey"]').value;
+    if (honey) {
+      contactFeedbackEl.textContent = translations[currentLang].successMsg;
+      contactFeedbackEl.className = 'contact-feedback success';
+      contactForm.reset();
+      return;
+    }
+
+    const t = translations[currentLang];
+    contactSubmitEl.disabled = true;
+    contactSubmitEl.textContent = t.sending;
+    contactFeedbackEl.textContent = '';
+    contactFeedbackEl.className = 'contact-feedback';
+
+    try {
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        contactFeedbackEl.textContent = t.successMsg;
+        contactFeedbackEl.className = 'contact-feedback success';
+        contactForm.reset();
+      } else {
+        throw new Error('Submit failed');
+      }
+    } catch (err) {
+      contactFeedbackEl.textContent = t.errorMsg;
+      contactFeedbackEl.className = 'contact-feedback error';
+    } finally {
+      contactSubmitEl.disabled = false;
+      contactSubmitEl.textContent = t.submitBtn;
+    }
   });
 
   renderLanguage('en');
