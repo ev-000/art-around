@@ -468,11 +468,40 @@
     </div>
 
     <!-- ====== CRIPTOVALUTE ====== -->
-    <div class="crypto-section">
-      <h3 class="crypto-title" id="cryptoTitle">Cryptocurrency</h3>
-      <div class="crypto-list">
+   <!-- BITCOIN: sostituisci l'indirizzo qui sotto -->
+        <div class="crypto-item">
+          <span class="crypto-label">BTC</span>
+          <span class="crypto-address" id="btc-addr">bc1qfnnxn908jhu8vugycf38ekpqunw57fm9yw6xvr</span>
+          <button class="copy-btn" data-target="btc-addr">Copy</button>
+        </div>
 
-        <!-- BITCOIN: sostituisci l'indirizzo qui sotto -->
+        <!-- LITECOIN: sostituisci l'indirizzo qui sotto -->
+        <div class="crypto-item">
+          <span class="crypto-label">LTC</span>
+          <span class="crypto-address" id="ltc-addr">LYcKjC4w3CZWeiwscWVSh1gRZSwYKsgyhg</span>
+          <button class="copy-btn" data-target="ltc-addr">Copy</button>
+        </div>
+
+        <!-- ETHEREUM: sostituisci l'indirizzo qui sotto -->
+        <div class="crypto-item">
+          <span class="crypto-label">ETH</span>
+          <span class="crypto-address" id="eth-addr">0xb1ab7C046af572689DD3D1c1515166Dd3Bd39246</span>
+          <button class="copy-btn" data-target="eth-addr">Copy</button>
+        </div>
+
+       <!-- RIPPLE: sostituisci l'indirizzo qui sotto -->
+        <div class="crypto-item">
+          <span class="crypto-label">XRP</span>
+          <span class="crypto-address" id="xrp-addr">r4ewp8YiptKTWEhaCqmUjBifmhHsLNvPmW</span>
+          <button class="copy-btn" data-target="xrp-addr">Copy</button>
+        </div>
+
+       <!-- USDT: sostituisci l'indirizzo qui sotto -->
+        <div class="crypto-item">
+          <span class="crypto-label">USDT</span>
+          <span class="crypto-address" id="usdt-addr">0xb1ab7C046af572689DD3D1c1515166Dd3Bd39246</span>
+          <button class="copy-btn" data-target="usdt-addr">Copy</button>
+        </div><!-- BITCOIN: sostituisci l'indirizzo qui sotto -->
         <div class="crypto-item">
           <span class="crypto-label">BTC</span>
           <span class="crypto-address" id="btc-addr">bc1qfnnxn908jhu8vugycf38ekpqunw57fm9yw6xvr</span>
@@ -515,8 +544,8 @@
   <!-- SEZIONE CONTATTO                                              -->
   <!-- ============================================================ -->
   <section class="contact-section">
-    <h2 class="contact-title" id="contactTitle">Contact the artist</h2>
-    <p class="contact-subtitle" id="contactSubtitle">Leave a message to be recontacted by the artist.</p>
+    <h2 class="contact-title" id="contactTitle">Contact Me</h2>
+    <p class="contact-subtitle" id="contactSubtitle">Leave a message — the artist will reply.</p>
 
     <!--
       CONFIGURAZIONE FORMSUBMIT:
@@ -575,8 +604,8 @@
       paragraphsAfter: [
         "What value would you give to a painting — a piece of an artist's soul — without knowing who created it, without knowing the age, the gender, the background, and without anyone naming a price?",
         "Paintings have their own soul. They are alive, and they speak to us. If this painting is calling you, it is yours. Nobody will stop you from taking it with you.",
-        "This artwork is open to donations at the links below. After donating what feels right to you, add your contact to the note of the payment and you will be contacted by the artist.",
-        "You will discover the face and the stories behind the art.",
+        "Please donate what feels right to you and leave a message below.",
+        "The artist will contact you back and you will be able to discover the face and the stories behind this art piece.",
       ],
       manifesto: [
         [{ text: "Free the Arts" }, { text: "Break the walls" }],
@@ -608,8 +637,8 @@
       paragraphsAfter: [
         "Que valor você daria a uma pintura — um pedaço da alma de um artista — sem saber quem a criou, sem conhecer sua idade, seu gênero, sua história, e sem que ninguém estabeleça um preço?",
         "As pinturas têm sua própria alma. Estão vivas e falam conosco. Se esta pintura está te chamando, ela é sua. Ninguém vai te impedir de levá-la com você.",
-        "Esta obra está aberta a doações nos links abaixo. Após doar o que sentir justo para você, adicione seu contato na nota do pagamento e o artista entrará em contato.",
-        "Você descobrirá o rosto e as histórias por trás da arte.",
+        "Por favor, doe o que sentir justo para você e deixe uma mensagem abaixo.",
+        "O artista entrará em contato e você poderá descobrir o rosto e as histórias por trás desta obra.",
       ],
       manifesto: [
         [{ text: "Liberte a Arte" }, { text: "Derrube os muros" }],
@@ -641,8 +670,8 @@
       paragraphsAfter: [
         "¿Qué valor le darías a un cuadro — un pedazo del alma de un artista — sin saber quién lo creó, sin conocer su edad, su género, su historia, y sin que nadie ponga un precio?",
         "Los cuadros tienen su propia alma. Están vivos y nos hablan. Si este cuadro te está llamando, es tuyo. Nadie te impedirá llevártelo.",
-        "Esta obra está abierta a donaciones en los enlaces de abajo. Tras donar lo que sientas justo para ti, añade tu contacto en la nota del pago y el artista se pondrá en contacto contigo.",
-        "Descubrirás el rostro y las historias detrás del arte.",
+        "Por favor, dona lo que sientas justo para ti y deja un mensaje abajo.",
+        "El artista te contactará y podrás descubrir el rostro y las historias detrás de esta obra.",
       ],
       manifesto: [
         [{ text: "Libera el Arte" }, { text: "Derriba los muros" }],
@@ -674,8 +703,8 @@
       paragraphsAfter: [
         "你会给一幅画——艺术家灵魂的一部分——赋予怎样的价值?在不知道是谁创作的,不知道作者的年龄、性别、背景,也没有人开价的情况下。",
         "画作有自己的灵魂。它们是活的,它们在与我们对话。如果这幅画在呼唤你,它就是你的。没有人会阻止你把它带走。",
-        "这件作品通过下方的链接接受捐赠。捐出你觉得合适的金额后,在付款备注中留下你的联系方式,艺术家会联系你。",
-        "你将发现艺术背后的面孔与故事。",
+        "请捐出你觉得合适的金额,并在下方留言。",
+        "艺术家会联系你,你将能够发现这件作品背后的面孔与故事。",
       ],
       manifesto: [
         [{ text: "解放艺术" }, { text: "打破围墙" }],
