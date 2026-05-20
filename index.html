@@ -241,8 +241,20 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #2b2419;
-    min-width: 40px;
+    min-width: 56px;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+  }
+
+  .crypto-network {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: #8a7758;
+    margin-top: 2px;
   }
 
   .crypto-address {
@@ -468,39 +480,50 @@
     </div>
 
     <!-- ====== CRIPTOVALUTE ====== -->
-   <!-- BITCOIN: sostituisci l'indirizzo qui sotto -->
+    <div class="crypto-section">
+      <h3 class="crypto-title" id="cryptoTitle">Cryptocurrency</h3>
+      <div class="crypto-list">
+
+        <!-- BITCOIN -->
         <div class="crypto-item">
           <span class="crypto-label">BTC</span>
           <span class="crypto-address" id="btc-addr">bc1qfnnxn908jhu8vugycf38ekpqunw57fm9yw6xvr</span>
           <button class="copy-btn" data-target="btc-addr">Copy</button>
         </div>
 
-        <!-- LITECOIN: sostituisci l'indirizzo qui sotto -->
+        <!-- LITECOIN -->
         <div class="crypto-item">
           <span class="crypto-label">LTC</span>
           <span class="crypto-address" id="ltc-addr">LYcKjC4w3CZWeiwscWVSh1gRZSwYKsgyhg</span>
           <button class="copy-btn" data-target="ltc-addr">Copy</button>
         </div>
 
-        <!-- ETHEREUM: sostituisci l'indirizzo qui sotto -->
+        <!-- ETHEREUM -->
         <div class="crypto-item">
           <span class="crypto-label">ETH</span>
           <span class="crypto-address" id="eth-addr">0xb1ab7C046af572689DD3D1c1515166Dd3Bd39246</span>
           <button class="copy-btn" data-target="eth-addr">Copy</button>
         </div>
 
-       <!-- RIPPLE: sostituisci l'indirizzo qui sotto -->
+        <!-- RIPPLE -->
         <div class="crypto-item">
           <span class="crypto-label">XRP</span>
           <span class="crypto-address" id="xrp-addr">r4ewp8YiptKTWEhaCqmUjBifmhHsLNvPmW</span>
           <button class="copy-btn" data-target="xrp-addr">Copy</button>
         </div>
 
-       <!-- USDT: sostituisci l'indirizzo qui sotto -->
+        <!-- USDT ERC-20 (rete Ethereum) -->
         <div class="crypto-item">
-          <span class="crypto-label">USDT</span>
+          <span class="crypto-label">USDT<small class="crypto-network">ERC-20</small></span>
           <span class="crypto-address" id="usdt-addr">0xb1ab7C046af572689DD3D1c1515166Dd3Bd39246</span>
           <button class="copy-btn" data-target="usdt-addr">Copy</button>
+        </div>
+
+        <!-- USDT TRC-20 (rete Tron) -->
+        <div class="crypto-item">
+          <span class="crypto-label">USDT<small class="crypto-network">TRC-20</small></span>
+          <span class="crypto-address" id="usdt-trc-addr">TJoz9yhg6i8xc3Bdg4UG8YNwWCtRrRS7Hk</span>
+          <button class="copy-btn" data-target="usdt-trc-addr">Copy</button>
         </div>
 
       </div>
@@ -515,18 +538,28 @@
     <p class="contact-subtitle" id="contactSubtitle">Leave a message — the artist will reply.</p>
 
     <!--
-      CONFIGURAZIONE FORMSUBMIT:
-      1. La prima volta che qualcuno invia il form usando questa email,
-         FormSubmit ti manda una mail di conferma con un link da cliccare.
-      2. Dopo l'attivazione, ti darà un alias/token (es. abc123xyz) da usare
-         al posto della tua email vera. Sostituisci "TUA-EMAIL@esempio.com"
-         con quell'alias così l'email vera non appare nel codice sorgente.
-         L'URL diventerà: https://formsubmit.co/abc123xyz
+      CONFIGURAZIONE WEB3FORMS:
+      1. Vai su https://web3forms.com
+      2. Inserisci la tua email e clicca "Create Access Key"
+      3. Ti arriverà una mail con la tua ACCESS KEY (una stringa UUID
+         tipo "abc12345-6789-def0-1234-567890abcdef")
+      4. Sostituisci "TUA-ACCESS-KEY-QUI" qui sotto con la tua chiave reale.
+         L'email vera non appare mai nel codice — solo l'access key,
+         che è anonima e non rivela a chi vanno i messaggi.
     -->
     <form class="contact-form"
           id="contactForm"
-          action="https://formsubmit.co/ellyfox90@hotmail.it"
+          action="https://api.web3forms.com/submit"
           method="POST">
+
+      <!-- ACCESS KEY -->
+      <input type="hidden" name="access_key" value="1854e53e-7382-4cb7-a792-e935dcd992ab">
+
+      <!-- Oggetto della mail che riceverai -->
+      <input type="hidden" name="subject" value="New message from Artist Statement page">
+
+      <!-- Nome del progetto come "from" -->
+      <input type="hidden" name="from_name" value="Art Around — Contact Form">
 
       <!-- Campo nome opzionale -->
       <input type="text" name="name" id="contactName" placeholder="Your name (optional)" autocomplete="name">
@@ -538,16 +571,7 @@
       <textarea name="message" id="contactMessage" placeholder="Your message" required></textarea>
 
       <!-- Honeypot anti-bot: gli umani non lo vedono, i bot lo compilano -->
-      <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
-
-      <!-- Disattiva la pagina di captcha di FormSubmit -->
-      <input type="hidden" name="_captcha" value="false">
-
-      <!-- Oggetto della mail che riceverai -->
-      <input type="hidden" name="_subject" value="New message from Artist Statement page">
-
-      <!-- Dopo l'invio reindirizza qui (lasciato vuoto = pagina di ringraziamento FormSubmit) -->
-      <!-- <input type="hidden" name="_next" value="https://ev-000.github.io/art-around/"> -->
+      <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" style="display:none;">
 
       <button type="submit" class="contact-submit" id="contactSubmit">Send Message</button>
     </form>
@@ -804,14 +828,15 @@
 
   // ============================================================
   // Submit del form di contatto (AJAX, senza reindirizzamento)
+  // Web3Forms — https://web3forms.com
   // ============================================================
   const contactForm = document.getElementById('contactForm');
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Honeypot: se compilato → bot, fingi successo senza inviare
-    const honey = contactForm.querySelector('input[name="_honey"]').value;
-    if (honey) {
+    // Honeypot: se la checkbox botcheck è spuntata → bot, fingi successo
+    const botcheck = contactForm.querySelector('input[name="botcheck"]');
+    if (botcheck && botcheck.checked) {
       contactFeedbackEl.textContent = translations[currentLang].successMsg;
       contactFeedbackEl.className = 'contact-feedback success';
       contactForm.reset();
@@ -825,23 +850,32 @@
     contactFeedbackEl.className = 'contact-feedback';
 
     try {
+      // Web3Forms accetta sia FormData sia JSON; usiamo JSON per maggior pulizia
       const formData = new FormData(contactForm);
+      const payload = Object.fromEntries(formData.entries());
+
       const response = await fetch(contactForm.action, {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         contactFeedbackEl.textContent = t.successMsg;
         contactFeedbackEl.className = 'contact-feedback success';
         contactForm.reset();
       } else {
-        throw new Error('Submit failed');
+        throw new Error(result.message || 'Submit failed');
       }
     } catch (err) {
       contactFeedbackEl.textContent = t.errorMsg;
       contactFeedbackEl.className = 'contact-feedback error';
+      console.error('Web3Forms error:', err);
     } finally {
       contactSubmitEl.disabled = false;
       contactSubmitEl.textContent = t.submitBtn;
